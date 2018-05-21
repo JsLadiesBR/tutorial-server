@@ -16,16 +16,26 @@ io.on('connection', socket => {
     
     console.log('Novo jogador na sala!')
 
-    players.push({
+    let position = {
         x: Math.floor(Math.random() * 700) + 50,
-        y: Math.floor(Math.random() * 700) + 50,
+        y: Math.floor(Math.random() * 700) + 50
+    }
+
+    players.push({
+        x: position.x,
+        y: position.y,
         playerId: socket.id,
         score: 0
     })
     
     socket.emit('currentPlayers', players)
     
-    socket.broadcast.emit('newPlayer', players)
+    socket.broadcast.emit('newPlayer', { 
+        x: position.x, 
+        y: position.y, 
+        score: 0, 
+        playerId: socket.id 
+    })
     
     socket.on('playerMovement', moveData => {
         players.map(player => {
@@ -37,7 +47,6 @@ io.on('connection', socket => {
         socket.broadcast.emit('playerMoved', players)
     })
 
-    // when a player moves, update the player data
     socket.on('playerMovement', function (movementData) {
         players.map(player => {
             if (player.playerId == socket.id) {
@@ -47,6 +56,7 @@ io.on('connection', socket => {
             }    
         })
     });
+
     socket.on('disconnect', () => {
         console.log(`Usuario desconectou. ${socket.id}`)
         players = players.filter(player => {
