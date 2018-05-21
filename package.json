@@ -1,0 +1,32 @@
+{
+  "name": "tutorial-server",
+  "version": "1.0.0",
+  "description": "Servidor para o jogo do tutorial do jsladies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JsLadiesBR/tutorial-server.git"
+  },
+  "keywords": [
+    "socket.io",
+    "phaser",
+    "javascript",
+    "jsladies",
+    "multiplayer"
+  ],
+  "author": "Ju Dantas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JsLadiesBR/tutorial-server/issues"
+  },
+  "homepage": "https://github.com/JsLadiesBR/tutorial-server#readme",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1"
+  }
+}
